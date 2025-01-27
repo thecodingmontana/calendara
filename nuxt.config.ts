@@ -5,6 +5,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt'
   ],
   devtools: { enabled: true },
   colorMode: {
@@ -38,4 +40,14 @@ export default defineNuxtConfig({
      */
     componentDir: './components/ui',
   },
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
+  piniaPluginPersistedstate: {
+    storage: 'cookies',
+    cookieOptions: {
+      sameSite: 'lax',
+    },
+    debug: true,
+  }
 })
