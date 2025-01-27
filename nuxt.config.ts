@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt'
+    'pinia-plugin-persistedstate/nuxt',
   ],
   devtools: { enabled: true },
   colorMode: {
@@ -29,6 +29,16 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
+  piniaPluginPersistedstate: {
+    storage: 'cookies',
+    cookieOptions: {
+      sameSite: 'lax',
+    },
+    debug: true,
+  },
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -40,14 +50,4 @@ export default defineNuxtConfig({
      */
     componentDir: './components/ui',
   },
-  pinia: {
-    storesDirs: ['./stores/**'],
-  },
-  piniaPluginPersistedstate: {
-    storage: 'cookies',
-    cookieOptions: {
-      sameSite: 'lax',
-    },
-    debug: true,
-  }
 })
