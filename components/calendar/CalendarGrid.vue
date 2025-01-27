@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { EditIcon, SearchIcon } from 'lucide-vue-next'
+import { useCalendarStore } from '~/stores/calendar'
+
+const calendarStore = useCalendarStore()
 
 const times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM']
 const days = [
@@ -11,6 +14,28 @@ const days = [
   { date: '19', name: 'Fri' },
   { date: '20', name: 'Sat' },
 ]
+
+const getEventsForDayAndTime = (date: string, time: string) => {
+  return calendarStore.events.filter(
+    event => event.date === date && event.time === time,
+  )
+}
+
+const onDragStart = (eventId: string) => {
+  console.log(eventId)
+  // Handle drag start (e.g., highlight the event)
+}
+
+const onDragEnd = () => {
+  // Handle drag end (e.g., remove highlight)
+}
+
+const onDrop = (date: string) => {
+  const eventId = event.dataTransfer?.getData('text/plain')
+  if (eventId) {
+    calendarStore.moveEvent(eventId, date)
+  }
+}
 </script>
 
 <template>
@@ -55,6 +80,8 @@ const days = [
         v-for="day in days"
         :key="day.date"
         class="col-span-1"
+        @dragover.prevent
+        @drop="onDrop(day.date)"
       >
         <div class="text-center font-medium">
           {{ day.name }}
@@ -63,8 +90,16 @@ const days = [
           <div
             v-for="time in times"
             :key="time"
-            class="h-16 border-b border-gray-200"
-          />
+            class="h-16 border-b border-gray-200 relative"
+          >
+            <EventCard
+              v-for="event in getEventsForDayAndTime(day.date, time)"
+              :key="event.id"
+              v-bind="event"
+              @dragstart="onDragStart"
+              @dragend="onDragEnd"
+            />
+          </div>
         </div>
       </div>
     </div>

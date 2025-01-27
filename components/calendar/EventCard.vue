@@ -1,17 +1,32 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
+  id: string
   title: string
   timeRange: string
   color: string
   avatars: Array
   attendeeCount: number
 }>()
+
+const emit = defineEmits(['dragstart', 'dragend'])
+
+const onDragStart = (event: DragEvent) => {
+  event.dataTransfer?.setData('text/plain', props.id)
+  emit('dragstart', props.id)
+}
+
+const onDragEnd = () => {
+  emit('dragend')
+}
 </script>
 
 <template>
   <div
-    class="rounded-lg p-3 shadow-sm bg-white/90 backdrop-blur-sm border-l-4"
+    class="rounded-lg p-3 shadow-sm bg-white/90 backdrop-blur-sm border-l-4 cursor-move"
     :style="{ borderColor: color }"
+    draggable="true"
+    @dragstart="onDragStart"
+    @dragend="onDragEnd"
   >
     <div class="font-semibold">
       {{ title }}
