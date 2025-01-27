@@ -9,6 +9,14 @@
     "nuxtjs",
     "shadcn-ui"
   ],
+  "homepage": "https://github.com/thecodingmontana/calendara#readme",
+  "bugs": {
+    "url": "https://github.com/thecodingmontana/calendara/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecodingmontana/calendara.git"
+  },
   "license": "MIT",
   "author": "thecodingmontana",
   "type": "module",
