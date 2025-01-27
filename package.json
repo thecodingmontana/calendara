@@ -1,7 +1,21 @@
 {
-  "name": "nuxt-app",
+  "name": "calendara",
+  "version": "1.0.0",
   "private": true,
+  "description": "Calendara is a modern, dynamic, and intuitive calendar application designed to streamline scheduling, event management, and time organization.",
+  "keywords": [
+    "calendar",
+    "vue",
+    "nuxtjs",
+    "shadcn-ui"
+  ],
+  "license": "MIT",
+  "author": "thecodingmontana",
   "type": "module",
+  "main": "tailwind.config.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -27,8 +41,8 @@
     "vue": "latest",
     "vue-router": "latest"
   },
-  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a",
   "devDependencies": {
     "typescript": "^5.7.3"
-  }
+  },
+  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
 }
